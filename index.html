@@ -9,6 +9,15 @@
      
 </head>
 <body>
-    
+    <div id="book-form" style="display:none;">
+        <input type="text" id="title" placeholder="Title">
+        <input type="text" id="author" placeholder="Author">
+        <input type="number" id="pages" placeholder="Number of Pages">
+        <input type="checkbox" id="read"> Read?
+        <button onclick="addBookToLibrary()">Add Book</button>
+      </div>
+      <button onclick="toggleForm()">NEW BOOK</button>
+      <div id="books"></div>
+      
 </body>
 </html>
