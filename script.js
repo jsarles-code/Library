@@ -7,16 +7,25 @@
 
 const myLibrary = [];
 
-function Book() {
-  // the constructor...
-  
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
 function addBookToLibrary() {
-  // do stuff here
-  // take user’s input and store the new book objects into an array. 
-   prompt('Enter the book title');
-    prompt('Enter the book author');
-    prompt('Enter the number of pages');
-
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const read = document.getElementById('read').checked;
+  
+  const book = new Book(title, author, pages, read);
+  myLibrary.push(book);
+  displayBooks();
+  toggleForm(); // Hide the form after adding a book
+}
+function toggleForm() {
+  const form = document.getElementById('book-form');
+  form.style.display = form.style.display === 'none' ? 'block' : 'none';
 }
