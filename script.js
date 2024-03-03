@@ -29,3 +29,29 @@ function toggleForm() {
   const form = document.getElementById('book-form');
   form.style.display = form.style.display === 'none' ? 'block' : 'none';
 }
+function displayBooks() {
+  const display = document.getElementById('books');
+  display.innerHTML = ''; // Clear the display
+  
+  myLibrary.forEach((book, index) => {
+    const bookCard = document.createElement('div');
+    bookCard.innerHTML = `
+      <p>Title: ${book.title}</p>
+      <p>Author: ${book.author}</p>
+      <p>Pages: ${book.pages}</p>
+      <p>Read: ${book.read ? 'Yes' : 'No'}</p>
+      <button onclick="removeBook(${index})">Remove</button>
+      <button onclick="toggleReadStatus(${index})">Change Read Status</button>
+    `;
+    display.appendChild(bookCard);
+  });
+}
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  displayBooks();
+}
+
+function toggleReadStatus(index) {
+  myLibrary[index].read = !myLibrary[index].read;
+  displayBooks();
+}
